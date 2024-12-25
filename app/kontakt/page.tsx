@@ -1,166 +1,146 @@
+"use client"
+
+import { Mail, Phone, Clock } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Button } from "@/components/ui/button"
+
 export default function Kontakt() {
     return (
-        <div className="relative min-h-screen bg-zinc-700">
-            <div className="absolute inset-0 flex items-start justify-center pt-28 pb-12 px-4">
-                <div className="flex flex-col lg:flex-row gap-8 max-w-6xl w-full">
-                    <div className="bg-white rounded-lg shadow-lg w-full lg:max-w-md p-6 sm:p-8">
-                        <h1 className="text-2xl sm:text-3xl font-bold text-center mb-4 sm:mb-6">Kontakt os</h1>
-                        <form className="space-y-4">
-                            <div className="space-y-2">
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-                                    Navn
-                                </label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                                    placeholder="Dit navn"
-                                    required
-                                />
-                            </div>
+        <div className="min-h-screen bg-zinc-100 pt-28 pb-12">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                <div className="text-center mb-12">
+                    <h1 className="text-3xl sm:text-4xl font-bold mb-4">
+                        Tag fat i os – så tager vi en uforpligtende snak om jeres hjemmesidebehov
+                    </h1>
+                    <p className="text-gray-600 max-w-2xl mx-auto">
+                        Vi er her kun for at hjælpe din forretning til online succes gennem professionelle hjemmesider og webshops. Vi rådgiver gratis og uforpligtende
+                    </p>
+                </div>
 
-                            <div className="space-y-2">
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                                    Email
-                                </label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                                    placeholder="din@email.dk"
-                                    required
-                                />
-                            </div>
+                <div className="grid md:grid-cols-2 gap-8">
+                    {/* Kontaktformular */}
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>Send os en besked</CardTitle>
+                            <CardDescription>
+                                Udfyld formularen, så vender vi tilbage hurtigst muligt
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <form className="space-y-4">
+                                <div className="grid sm:grid-cols-2 gap-4">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="name">Dit fulde navn</Label>
+                                        <Input id="name" placeholder="John Doe" required />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="company">Virksomhedsnavn</Label>
+                                        <Input id="company" placeholder="Firma A/S" />
+                                    </div>
+                                </div>
 
-                            <div className="space-y-2">
-                                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                                    Telefon
-                                </label>
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                                    placeholder="+45 12 34 56 78"
-                                />
-                            </div>
+                                <div className="grid sm:grid-cols-2 gap-4">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="email">E-mail</Label>
+                                        <Input id="email" type="email" placeholder="john@firma.dk" required />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label htmlFor="phone">Telefonnummer</Label>
+                                        <Input id="phone" type="tel" placeholder="+45 12 34 56 78" />
+                                    </div>
+                                </div>
 
-                            <div className="space-y-2">
-                                <label htmlFor="company" className="block text-sm font-medium text-gray-700">
-                                    Virksomhed
-                                </label>
-                                <input
-                                    type="text"
-                                    id="company"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                                    placeholder="Dit firma"
-                                />
-                            </div>
+                                <div className="space-y-2">
+                                    <Label htmlFor="message">Din besked</Label>
+                                    <Textarea 
+                                        id="message" 
+                                        placeholder="Skriv din besked her..." 
+                                        className="min-h-[150px]"
+                                        required 
+                                    />
+                                </div>
 
-                            <div className="space-y-2">
-                                <label htmlFor="cvr" className="block text-sm font-medium text-gray-700">
-                                    CVR nummer
-                                </label>
-                                <input
-                                    type="text"
-                                    id="cvr"
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                                    placeholder="12345678"
-                                />
-                            </div>
+                                <div className="space-y-4">
+                                    <div className="flex items-center space-x-2">
+                                        <input
+                                            type="checkbox"
+                                            id="consent"
+                                            className="h-4 w-4 rounded border-gray-300 text-green-500 focus:ring-green-500"
+                                            required
+                                        />
+                                        <Label htmlFor="consent" className="text-sm text-gray-600">
+                                            Jeg accepterer at NationsNetwork må kontakte mig
+                                        </Label>
+                                    </div>
 
-                            <div className="space-y-2">
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-                                    Besked
-                                </label>
-                                <textarea
-                                    id="message"
-                                    rows={4}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                                    placeholder="Skriv din besked her..."
-                                    required
-                                />
-                            </div>
+                                    <Button type="submit" className="w-full bg-green-500 hover:bg-green-600">
+                                        Send besked
+                                    </Button>
+                                </div>
+                            </form>
+                        </CardContent>
+                    </Card>
 
-                            <div className="flex items-center space-x-2">
-                                <input
-                                    type="checkbox"
-                                    id="consent"
-                                    className="h-4 w-4 rounded border-gray-300 text-green-500 focus:ring-green-500"
-                                    required
-                                />
-                                <label htmlFor="consent" className="text-sm text-gray-600">
-                                    Jeg accepterer at NationsNetwork må kontakte mig telefonisk
-                                </label>
-                            </div>
+                    {/* Kontakt Information */}
+                    <div className="space-y-6">
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Kontakt Information</CardTitle>
+                            </CardHeader>
+                            <CardContent className="space-y-6">
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-3">
+                                        <Mail className="h-5 w-5 text-green-500" />
+                                        <div>
+                                            <p className="font-medium">Email</p>
+                                            <a href="mailto:kontakt@nationsnetwork.dk" className="text-gray-600 hover:text-green-500">
+                                                kontakt@nationsnetwork.dk
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <Phone className="h-5 w-5 text-green-500" />
+                                        <div>
+                                            <p className="font-medium">Telefon</p>
+                                            <a href="tel:+4527572437" className="text-gray-600 hover:text-green-500">
+                                                +45 27 57 24 37 (Tobias)
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <Clock className="h-5 w-5 text-green-500" />
+                                        <div>
+                                            <p className="font-medium">Åbningstider</p>
+                                            <p className="text-gray-600">Man-Fre: 8:00 - 17:00</p>
+                                            <p className="text-gray-600">Weekend: Lukket</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <div className="flex items-center space-x-2">
-                                <input
-                                    type="checkbox"
-                                    id="kontakt-tid-9-11"
-                                    className="h-4 w-4 rounded border-gray-300 text-green-500 focus:ring-green-500"
-                                />
-                                <label htmlFor="consent" className="text-sm text-gray-600">
-                                    Jeg vil helst kontaktes mellem <b>08:00</b> og <b>11:00</b>?
-                                </label>
-                            </div>
-
-                            <div className="flex items-center space-x-2">
-                                <input
-                                    type="checkbox"
-                                    id="kontakt-tid-11-17"
-                                    className="h-4 w-4 rounded border-gray-300 text-green-500 focus:ring-green-500"
-                                />
-                                <label htmlFor="consent" className="text-sm text-gray-600">
-                                    Jeg vil helst kontaktes mellem <b>11:00</b> og <b>17:00</b>?
-                                </label>
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors"
-                            >
-                                Send besked
-                            </button>
-                        </form>
-                    </div>
-
-                    <div className="bg-white rounded-lg shadow-lg h-fit w-full lg:max-w-md p-6 sm:p-8">
-                        <h2 className="text-xl sm:text-2xl font-bold mb-4">Kontakt Information</h2>
-                        <div className="space-y-4">
-                            <div>
-                                <h3 className="text-base sm:text-lg font-semibold text-gray-700">Svartid</h3>
-                                <p className="text-sm sm:text-base text-gray-600">
-                                    Vi bestræber os på at svare inden for 1-2 hverdage
-                                </p>
-                            </div>
-                            <div>
-                                <h3 className="text-base sm:text-lg font-semibold text-gray-700">Åbningstider</h3>
-                                <p className="text-sm sm:text-base text-gray-600">Mandag - Fredag: 8:00 - 17:00</p>
-                                <p className="text-sm sm:text-base text-gray-600">Weekend: Lukket</p>
-                            </div>
-                            <div>
-                                <h3 className="text-base sm:text-lg font-semibold text-gray-700">Kontakt</h3>
-                                <div className="space-y-1">
-                                    <p className="text-sm sm:text-base text-gray-600 hover:text-green-500">
-                                        <a href="tel:+4527572437">📞 +45 27 57 24 37 (Tobias)</a>
-                                    </p>
-                                    <p className="text-sm sm:text-base text-gray-600 hover:text-green-500">
-                                        <a href="tel:+45">📞 +45 TBA (Lucas)</a>
-                                    </p>
-                                    <p className="text-sm sm:text-base text-gray-600 hover:text-green-500">
-                                        <a href="mailto:kontakt@nationsnetwork.dk">✉️ kontakt@nationsnetwork.dk</a>
+                                <div className="pt-6 border-t border-gray-200">
+                                    <p className="text-sm text-gray-500">
+                                        Har du brug for øjeblikkelig assistance? Ring til os på vores hovednummer.
                                     </p>
                                 </div>
-                            </div>
-                            <div className="pt-4 border-t border-gray-200">
-                                <p className="text-xs sm:text-sm text-gray-500">
-                                    Har du brug for øjeblikkelig assistance? Ring til os på vores hovednummer.
+                            </CardContent>
+                        </Card>
+
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Svartid</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-gray-600">
+                                    Vi svarer altid indenfor 24 timer.
                                 </p>
-                            </div>
-                        </div>
+                            </CardContent>
+                        </Card>
                     </div>
                 </div>
             </div>
         </div>
-    );
+    )
 }

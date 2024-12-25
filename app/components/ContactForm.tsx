@@ -13,30 +13,68 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ContactForm() {
+  const { toast } = useToast();
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     company: '',
-    cvr: '',
     message: '',
     consent: false
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Her kan du tilføje din email logik
-    console.log(formData);
-    setIsOpen(false);
+    setIsLoading(true);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        toast({
+          title: "Besked sendt!",
+          description: "Vi vender tilbage til dig hurtigst muligt.",
+        });
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          message: '',
+          consent: false
+        });
+      } else {
+        throw new Error(data.error);
+      }
+    } catch {
+      toast({
+        title: "Der skete en fejl",
+        description: "Prøv igen eller kontakt os på telefon.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="default" size="lg" className="bg-green-500 hover:bg-green-600 text-white">
+        <Button variant="default" size="lg" className="bg-green-500 hover:bg-green-600 text-white" disabled={isLoading}>
           Kontakt os
         </Button>
       </DialogTrigger>
@@ -90,16 +128,6 @@ export default function ContactForm() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="cvr">CVR NUMMER</Label>
-            <Input
-              id="cvr"
-              type="text"
-              placeholder="12345678"
-              value={formData.cvr}
-              onChange={(e) => setFormData({ ...formData, cvr: e.target.value })}
-            />
-          </div>
-          <div className="space-y-2">
             <Label htmlFor="message">Besked</Label>
             <Textarea
               id="message"
@@ -122,7 +150,7 @@ export default function ContactForm() {
               Jeg accepterer at NationsNetwork må kontakte mig telefonisk
             </Label>
           </div>
-          <Button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-white">
+          <Button type="submit" className="w-full bg-green-500 hover:bg-green-600 text-white" disabled={isLoading}>
             Send besked
           </Button>
         </form>
