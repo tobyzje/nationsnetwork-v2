@@ -19,6 +19,7 @@ const addons = [
   { name: "Komplet konti-system", price: "999", description: "Komplet log-ind, oprettelse af brugere, som fungere perfekt med vores Admin-panel." },
   { name: "Vedligeholdelse af hjemmeside", price: "799", description: "Vi holder din hjemmeside opdateret og vedligeholdt, så den altid fungerer perfekt. Betales månedligt.", period: "md" },
   { name: "Hosting af hjemmeside", price: "50", description: "Vi hoster din hjemmeside på vores egne servere, så den altid fungerer perfekt. Betales månedligt.", period: "md" },
+  { name: "Nyhedsbrev", price: "699", description: "Vi hjælper dig med at oprette et nyhedsbrev, som du kan sende til dine kunder. Betales månedligt.", period: "md" },
 
 ]
 
