@@ -1,22 +1,17 @@
-import Image from "next/image";
-import BG from "@/public/bg.jpg";
 import ContactForm from "./components/ContactForm";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code2, Rocket, Users, Zap, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
+
+ 
 export default function Home() {
   return (
     <div className="min-h-screen bg-zinc-100">
       {/* Hero Section */}
       <div className="relative h-[80vh] flex items-center justify-center">
-        <Image 
-          src={BG}
-          alt="Nations Network Hero Image"
-          fill
-          className="object-cover brightness-50"
-          priority
-        />
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-green-500 opacity-90" />
         <div className="absolute z-10 text-center max-w-4xl px-4">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Din Digitale Partner</h1>
           <p className="text-xl text-white mb-8">Vi hjælper din virksomhed med at vokse gennem skræddersyede digitale løsninger</p>
@@ -25,9 +20,11 @@ export default function Home() {
               Kom i gang
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <p className={buttonVariants({ variant: "outline", size: "lg", className: "text-white bg-black border-white hover:outline-white hover:cursor-pointer" })}>
-              Se vores priser
-            </p>
+            <Link href="/priser">
+              <p className={buttonVariants({ variant: "outline", size: "lg", className: "text-white bg-black border-white hover:outline-white hover:cursor-pointer" })}>
+                Se vores priser
+              </p>
+            </Link>
           </div>
         </div>
       </div>
