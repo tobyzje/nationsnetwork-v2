@@ -3,9 +3,19 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code2, Rocket, Users, Zap, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { Metadata } from 'next'
 
+export const metadata: Metadata = {
+  title: 'Nations Network | Webudvikling & Hosting',
+  description: 'Nations Network er en webudvikling og hosting virksomhed der tilbyder skræddersyede digitale løsninger til din virksomhed',
+  keywords: 'webudvikling, hosting, digitale løsninger, skræddersyede, virksomhed',
+  openGraph: {
+    title: 'Nations Network | Webudvikling & Hosting',
+    description: 'Nations Network er en webudvikling og hosting virksomhed der tilbyder skræddersyede digitale løsninger til din virksomhed',
+    images: ['/logo.png'],
+  }
+}
 
- 
 export default function Home() {
   return (
     <div className="min-h-screen bg-zinc-100">
