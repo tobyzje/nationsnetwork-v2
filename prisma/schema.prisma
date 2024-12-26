@@ -37,6 +37,7 @@ model User {
   // Relationer
   subscriptions  Subscription[]
   supportTickets SupportTicket[]
+  isAdmin        Boolean     @default(false)
 }
 
 model WebSolution {
