@@ -23,7 +23,19 @@ async function getUser(token: string) {
   const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: string }
   return prisma.user.findUnique({
     where: { id: decoded.userId },
-    include: {
+    select: {
+      id: true,
+      email: true,
+      name: true,
+      phone: true,
+      companyName: true,
+      cvr: true,
+      address: true,
+      city: true,
+      zipCode: true,
+      createdAt: true,
+      hasWebSolution: true,
+      webSolutionType: true,
       subscriptions: true,
       supportTickets: {
         orderBy: {

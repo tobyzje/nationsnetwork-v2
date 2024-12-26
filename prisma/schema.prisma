@@ -29,7 +29,8 @@ model User {
   
   // System felter
   hasWebSolution Boolean     @default(false)
-  webSolution    WebSolution?
+  webSolutionType  String?
+  webSolution      WebSolution?
   createdAt      DateTime    @default(now())
   updatedAt      DateTime    @updatedAt
   
