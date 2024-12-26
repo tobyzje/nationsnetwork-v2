@@ -11,10 +11,15 @@ export async function GET() {
     const token = cookieStore.get('auth-token')?.value
 
     if (!token) {
-      return NextResponse.json({ user: null })
+      return NextResponse.json({ user: null }, { status: 401 })
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: string }
+    if (!process.env.JWT_SECRET) {
+      console.error('JWT_SECRET is not defined')
+      return NextResponse.json({ error: "Server configuration error" }, { status: 500 })
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET) as { userId: string }
     const user = await prisma.user.findUnique({
       where: { id: decoded.userId },
       select: {
@@ -34,9 +39,18 @@ export async function GET() {
       }
     })
 
+    if (!user) {
+      return NextResponse.json({ user: null }, { status: 401 })
+    }
+
     return NextResponse.json({ user })
   } catch (error) {
     console.error('Auth check error:', error)
-    return NextResponse.json({ user: null })
+    return NextResponse.json(
+      { error: "Authentication failed" }, 
+      { status: 401 }
+    )
+  } finally {
+    await prisma.$disconnect()
   }
 }

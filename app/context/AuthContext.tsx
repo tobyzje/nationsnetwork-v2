@@ -28,21 +28,28 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     checkAuth()
   }, [])
 
+  const API_BASE = process.env.NEXT_PUBLIC_URL || ''
+
   const checkAuth = async () => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/auth/user`)
+      const response = await fetch(`${API_BASE}/api/auth/user`, {
+        credentials: 'include'
+      })
+      if (!response.ok) throw new Error('Auth check failed')
       const data = await response.json()
       setUser(data.user)
     } catch (error) {
       console.error("Auth check error:", error)
+      setUser(null)
     } finally {
       setLoading(false)
     }
   }
 
   const login = async (email: string, password: string) => {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/auth/login`, {
+    const response = await fetch(`${API_BASE}/api/auth/login`, {
       method: "POST",
+      credentials: 'include',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     })
