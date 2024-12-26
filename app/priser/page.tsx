@@ -27,7 +27,7 @@ const features = {
 
 const addons = [
   { name: "Blog-sektion", price: "299", description: "Tilføj en professionel blog sektion", period: "once" },
-  { name: "Webshop", price: "4.999", description: "Komplet webshop løsning. Med eget Admin-panel, til h��ndtere produkter, kunder og ordrer.", period: "once" },
+  { name: "Webshop", price: "4999", description: "Komplet webshop løsning. Med eget Admin-panel, til h��ndtere produkter, kunder og ordrer.", period: "once" },
   { name: "Komplet konti-system", price: "999", description: "Komplet log-ind, oprettelse af brugere, som fungere perfekt med vores Admin-panel.", period: "once" },
   { 
     name: "Vedligeholdelse af hjemmeside", 
@@ -47,7 +47,7 @@ const addons = [
     description: "Vi hjælper dig med at oprette et nyhedsbrev, som du kan sende til dine kunder.", 
     period: "once" 
   },
-  { name: "Personligt Bookingsystem / Kalender", price: "1.999", description: "Vi hjælper dig med at oprette et personligt bookingsystem, som du kan bruge til at booke tid med dig.", period: "once" },
+  { name: "Personligt Bookingsystem / Kalender", price: "1999", description: "Vi hjælper dig med at oprette et personligt bookingsystem, som du kan bruge til at booke tid med dig.", period: "once" },
   { name: "Event / Billet System", price: "1199", description: "Vi hjælper dig med at oprette et event / billet system, som du kan bruge til at sælge billetter til dine events.", period: "once" },
 ]
 
@@ -176,7 +176,7 @@ export default function PricingPage() {
                     className="w-full"
                     onClick={() => handleOrderClick({
                       name: "Starter",
-                      price: "1.500",
+                      price: "1500",
                       description: "Perfekt til små virksomheder",
                       period: "once"
                     })}
@@ -232,7 +232,7 @@ export default function PricingPage() {
                     className="w-full bg-green-500 hover:bg-green-600"
                     onClick={() => handleOrderClick({
                       name: "Pro",
-                      price: "3.500",
+                      price: "3500",
                       description: "For vækstende virksomheder",
                       period: "once"
                     })}
@@ -276,7 +276,7 @@ export default function PricingPage() {
                     className="w-full"
                     onClick={() => handleOrderClick({
                       name: "Enterprise",
-                      price: "6.500",
+                      price: "6500",
                       description: "Til store virksomheder",
                       period: "once"
                     })}
