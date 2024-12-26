@@ -28,7 +28,7 @@ export default function OmOs() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
             <div className="min-h-screen bg-zinc-100">
-                <div className="relative z-10 pt-24 pb-16 bg-black">
+                <div className="relative z-10 pt-24 pb-16 bg-slate-200">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6">
                         <div className="text-center animate-in fade-in slide-in-from-bottom-4 duration-1000">
                             <h1 className="text-5xl font-bold text-white mb-4">Om os</h1>

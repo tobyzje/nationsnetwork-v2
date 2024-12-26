@@ -7,6 +7,7 @@ import {
 } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 interface SupportTicket {
   id: string
@@ -125,16 +126,36 @@ export default async function Dashboard() {
             </div>
             {user.hasWebSolution ? (
               <div className="bg-green-50 p-4 rounded-lg mb-4">
-                <div className="flex items-center gap-2 text-green-700">
-                  <Package className="w-5 h-5" />
-                  <span className="font-medium">Webløsning Aktiv</span>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-green-700">
+                    <Package className="w-5 h-5" />
+                    <div>
+                      <span className="font-medium">Webløsning Aktiv</span>
+                      <p className="text-sm text-green-600">{user.webSolutionType}</p>
+                    </div>
+                  </div>
+                  <Button 
+                    variant="outline" 
+                    className="text-green-700 border-green-700 hover:bg-green-50"
+                    asChild
+                  >
+                    <Link href="/">
+                      Administrer
+                    </Link>
+                  </Button>
                 </div>
               </div>
             ) : (
               <div className="bg-gray-50 p-4 rounded-lg mb-4">
                 <p className="text-gray-600">Ingen aktive løsninger</p>
-                <Button className="mt-3 w-full" variant="outline">
-                  Se vores løsninger
+                <Button 
+                  className="mt-3 w-full" 
+                  variant="outline"
+                  asChild
+                >
+                  <Link href="/priser">
+                    Se vores løsninger
+                  </Link>
                 </Button>
               </div>
             )}
