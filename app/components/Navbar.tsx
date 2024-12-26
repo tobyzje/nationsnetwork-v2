@@ -5,10 +5,7 @@ import { useState, useEffect } from "react";
 import LoginButton from "./LoginButton";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-<div>
-<p className="text-sm text-gray-500">Navn</p>
-<p className="font-medium">{user.name || 'Ikke angivet'}</p>
-</div>
+
 const Logo = ({ isScrolled }: { isScrolled: boolean }) => (
   <Link href="/" className="font-bold text-xl text-white tracking-tight hover:scale-105 transition-all duration-300">
     <p className={cn(isScrolled ? "text-zinc-600" : "text-zinc-400")}>
