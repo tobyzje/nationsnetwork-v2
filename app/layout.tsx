@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { CartProvider } from '@/context/CartContext'
 import MobileCartIcon from "./components/MobileCartIcon"
+import CookieConsent from "./components/CookieConsent"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -100,6 +101,7 @@ export default function RootLayout({
           {children}
           <MobileCartIcon />
           <Footer />
+          <CookieConsent />
         </CartProvider>
       </body>
     </html>

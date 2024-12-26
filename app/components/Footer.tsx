@@ -1,72 +1,126 @@
 "use client"
 
-import { Facebook, Mail, MapPin, Phone } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-900 text-white py-8">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          
-          {/* Kontakt Info */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Kontakt Os</h3>
-            <div className="space-y-3">
-              <div className="flex items-center gap-2">
-                <Phone className="h-5 w-5 text-green-500" />
-                <p>+45 27 57 24 37</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-5 w-5 text-green-500" />
-                <p>kontakt@nationsnetwork.dk</p>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-green-500" />
-                <p>Grindsted, Danmark</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Hurtige Links */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Hurtige Links</h3>
-            <ul className="space-y-2">
-              <li><Link href="/priser" className="hover:text-green-500 transition-colors">Ydelser</Link></li>
-              <li><Link href="/om-os" className="hover:text-green-500 transition-colors">Om Os</Link></li>
-              <li><Link href="/kontakt" className="hover:text-green-500 transition-colors">Kontakt</Link></li>
-              <li><Link href="/vores-team" className="hover:text-green-500 transition-colors">Vores Team</Link></li>
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Services</h3>
-            <ul className="space-y-2">
-              <li>Webudvikling</li>
-              <li>Digital Marketing</li>
-              <li>SEO Optimering</li>
-              <li>Support & Vedligeholdelse</li>
-            </ul>
-          </div>
-
-          {/* Sociale Medier */}
-          <div>
-            <h3 className="text-xl font-bold mb-4">Følg Os</h3>
-            <div className="flex gap-4">
-              <Link href="https://www.facebook.com/profile.php?id=61571182379847" className="hover:scale-125 transition-all duration-300">
-                <Button variant="default" size="icon" className="rounded-full hover:bg-green-500">
-                  <Facebook className="h-5 w-5  hover:scale-125 transition-all duration-300" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-
+    <footer className="bg-zinc-900 text-white py-12">
+      <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/* Kontakt */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Kontakt</h3>
+          <ul className="space-y-2">
+            <li className="flex items-center gap-2">
+              <Mail className="h-4 w-4" />
+              <a href="mailto:kontakt@nationsnetwork.dk" className="hover:text-green-500">
+                kontakt@nationsnetwork.dk
+              </a>
+            </li>
+            <li className="flex items-center gap-2">
+              <Phone className="h-4 w-4" />
+              <a href="tel:+4527572437" className="hover:text-green-500">
+                +45 27 57 24 37
+              </a>
+            </li>
+          </ul>
         </div>
 
-        <div className="border-t border-zinc-800 mt-8 pt-8 text-center text-sm text-zinc-400">
-          <p>© {new Date().getFullYear()} NationsNetwork. Alle rettigheder forbeholdes.</p>
+        {/* Links */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Links</h3>
+          <ul className="space-y-2">
+            <li>
+              <Link href="/om-os" className="hover:text-green-500">
+                Om os
+              </Link>
+            </li>
+            <li>
+              <Link href="/cases" className="hover:text-green-500">
+                Cases
+              </Link>
+            </li>
+            <li>
+              <Link href="/priser" className="hover:text-green-500">
+                Priser
+              </Link>
+            </li>
+            <li>
+              <Link href="/kontakt" className="hover:text-green-500">
+                Kontakt
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* Juridisk */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Juridisk</h3>
+          <ul className="space-y-2">
+            <li>
+              <Link href="/handelsbetingelser" className="hover:text-green-500">
+                Handelsbetingelser
+              </Link>
+            </li>
+            <li>
+              <Link href="/cookie-politik" className="hover:text-green-500">
+                Cookie Politik
+              </Link>
+            </li>
+            <li>
+              <button 
+                onClick={() => {
+                  localStorage.removeItem('cookieConsent')
+                  window.location.reload()
+                }}
+                className="hover:text-green-500 cursor-pointer"
+              >
+                Cookie Indstillinger
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        {/* Sociale Medier */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Følg os</h3>
+          <div className="flex gap-4">
+            <a 
+              href="https://www.facebook.com/nationsnetwork" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-green-500"
+            >
+              <Facebook className="h-6 w-6" />
+            </a>
+            <a 
+              href="https://www.instagram.com/nationsnetwork" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-green-500"
+            >
+              <Instagram className="h-6 w-6" />
+            </a>
+            <a 
+              href="https://www.linkedin.com/company/nationsnetwork" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-green-500"
+            >
+              <Linkedin className="h-6 w-6" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 mt-8 pt-8 border-t border-zinc-800">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-zinc-400">
+            © {new Date().getFullYear()} NationsNetwork. Alle rettigheder forbeholdes.
+          </p>
+          <p className="text-sm text-zinc-400">
+            CVR: 45062260
+          </p>
         </div>
       </div>
     </footer>

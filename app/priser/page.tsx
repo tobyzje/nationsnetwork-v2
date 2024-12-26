@@ -1,6 +1,6 @@
 "use client"
 
-import { Check, Plus } from "lucide-react"
+import { Check, FileCog } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -12,19 +12,21 @@ import { useState } from "react"
 import ProcessSteps from "../components/ProcessSteps"
 
 const features = {
-  starter: ["Op til 5 sider", "Simpel SEO optimering", "SSL Certifikat", "Support 9-16"],
+  starter: ["Op til 3 sider", "Simpel SEO optimering", "SSL Certifikat", "Support 9-16"],
   pro: ["Op til 8 sider", "SEO optimering", "Google Ads", "24/7 Support", "Analytics"],
   enterprise: ["Alt i pro", "Ubegrenset sider", "Ubegrenset SEO optimering", "Udvidet support", "Og meget mere"]
 }
 
 const addons = [
-  { name: "Blog post", price: "299", description: "Tilføj en professionel blog sektion" },
-  { name: "Webshop", price: "3.999", description: "Komplet webshop løsning. Med eget Admin-panel, til håndtere produkter, kunder og ordrer." },
+  { name: "Blog-sektion", price: "299", description: "Tilføj en professionel blog sektion" },
+  { name: "Webshop", price: "4.999", description: "Komplet webshop løsning. Med eget Admin-panel, til håndtere produkter, kunder og ordrer." },
   { name: "Komplet konti-system", price: "999", description: "Komplet log-ind, oprettelse af brugere, som fungere perfekt med vores Admin-panel." },
   { name: "Vedligeholdelse af hjemmeside", price: "799", description: "Vi holder din hjemmeside opdateret og vedligeholdt, så den altid fungerer perfekt. Betales månedligt.", period: "md" },
   { name: "Hosting af hjemmeside", price: "50", description: "Vi hoster din hjemmeside på vores egne servere, så den altid fungerer perfekt. Betales månedligt.", period: "md" },
   { name: "Nyhedsbrev", price: "699", description: "Vi hjælper dig med at oprette et nyhedsbrev, som du kan sende til dine kunder. Betales månedligt.", period: "md" },
-
+  { name: "Personligt Bookingsystem / Kalender", price: "1.999", description: "Vi hjælper dig med at oprette et personligt bookingsystem, som du kan bruge til at booke tid med dig." },
+  { name: "Event / Billet System", price: "1199", description: "Vi hjælper dig med at oprette et event / billet system, som du kan bruge til at sælge billetter til dine events." },
+ 
 ]
 
 interface Product {
@@ -111,7 +113,7 @@ export default function PricingPage() {
                 <CardTitle>Pro</CardTitle>
                 <CardDescription>For vækstende virksomheder</CardDescription>
                 <div className="mt-4">
-                  <span className="text-3xl font-bold">5.000 kr</span>
+                  <span className="text-3xl font-bold">3.500 kr</span>
                   <span className="text-gray-500">/eksl. moms</span>
                 </div>
               </CardHeader>
@@ -130,7 +132,7 @@ export default function PricingPage() {
                   className="w-full bg-green-500 hover:bg-green-600"
                   onClick={() => handleOrderClick({
                     name: "Pro",
-                    price: "5.000",
+                    price: "3.500",
                     description: "For vækstende virksomheder"
                   })}
                 >
@@ -145,7 +147,7 @@ export default function PricingPage() {
                 <CardTitle>Enterprise</CardTitle>
                 <CardDescription>Til store virksomheder</CardDescription>
                 <div className="mt-4">
-                  <span className="text-3xl font-bold">8.500 kr</span>
+                  <span className="text-3xl font-bold">6.500 kr</span>
                   <span className="text-gray-500">/eksl. moms</span>
                 </div>
               </CardHeader>
@@ -164,7 +166,7 @@ export default function PricingPage() {
                   className="w-full"
                   onClick={() => handleOrderClick({
                     name: "Enterprise",
-                    price: "8.500",
+                    price: "6.500",
                     description: "Til store virksomheder"
                   })}
                 >
@@ -187,7 +189,7 @@ export default function PricingPage() {
                 <Card key={addon.name} className="flex flex-col">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Plus className="h-5 w-5" />
+                      <FileCog className="h-5 w-5" />
                       {addon.name}
                     </CardTitle>
                     <CardDescription>{addon.description}</CardDescription>
