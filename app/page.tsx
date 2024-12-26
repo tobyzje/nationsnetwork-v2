@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Nations Network | Webudvikling & Hosting',
     description: 'Nations Network er en webudvikling og hosting virksomhed der tilbyder skræddersyede digitale løsninger til din virksomhed',
-    images: ['/logo.png'],
+    images: ['favicon.ico'],
   }
 }
 

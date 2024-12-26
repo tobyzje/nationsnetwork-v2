@@ -1,39 +1,45 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { useCart } from "../context/CartContext"
+import { useCart } from "@/context/CartContext"
 import { ShoppingCart } from "lucide-react"
+import { useState } from "react"
 
 interface AddToCartButtonProps {
-  name: string
-  price: string
-  period?: string
-  description: string
+  item: {
+    id: string
+    name: string
+    price: string
+    period?: string
+    description: string
+  }
+  className?: string
 }
 
-export default function AddToCartButton({ name, price, period, description }: AddToCartButtonProps) {
+export default function AddToCartButton({ item, className }: AddToCartButtonProps) {
   const { dispatch } = useCart()
+  const [loading, setLoading] = useState(false)
 
   const handleAddToCart = () => {
-    dispatch({
-      type: 'ADD_ITEM',
-      payload: {
-        id: `${name}-${Date.now()}`,
-        name,
-        price,
-        period,
-        description
-      }
-    })
+    setLoading(true)
+    dispatch({ type: 'ADD_ITEM', payload: item })
+    setTimeout(() => setLoading(false), 500)
   }
 
   return (
     <Button 
-      onClick={handleAddToCart}
-      className="w-full"
+      onClick={handleAddToCart} 
+      disabled={loading}
+      className={className}
     >
-      <ShoppingCart className="mr-2 h-4 w-4" />
-      Tilføj til kurv
+      {loading ? (
+        "Tilføjer..."
+      ) : (
+        <>
+          <ShoppingCart className="mr-2 h-5 w-5" />
+          Tilføj til kurv
+        </>
+      )}
     </Button>
   )
 } 

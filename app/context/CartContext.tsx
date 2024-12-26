@@ -19,10 +19,14 @@ type CartAction =
   | { type: 'ADD_ITEM'; payload: CartItem }
   | { type: 'REMOVE_ITEM'; payload: string }
   | { type: 'CLEAR_CART' }
+  | { type: 'REMOVE_FROM_CART'; payload: string }
 
 const CartContext = createContext<{
   state: CartState
   dispatch: React.Dispatch<CartAction>
+  cart: CartItem[]
+  total: number
+  removeFromCart: (id: string) => void
 } | undefined>(undefined)
 
 const cartReducer = (state: CartState, action: CartAction): CartState => {
@@ -45,6 +49,11 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
         items: [],
         total: 0
       }
+    case 'REMOVE_FROM_CART':
+      return {
+        ...state,
+        items: state.items.filter(item => item.id !== action.payload)
+      }
     default:
       return state
   }
@@ -53,8 +62,21 @@ const cartReducer = (state: CartState, action: CartAction): CartState => {
 export function CartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [], total: 0 })
 
+  const removeFromCart = (id: string) => {
+    dispatch({ type: 'REMOVE_FROM_CART', payload: id })
+  }
+
+  const cart = state.items
+  const total = cart.reduce((sum, item) => sum + Number(item.price), 0)
+
   return (
-    <CartContext.Provider value={{ state, dispatch }}>
+    <CartContext.Provider value={{ 
+      state, 
+      dispatch, 
+      cart, 
+      total, 
+      removeFromCart 
+    }}>
       {children}
     </CartContext.Provider>
   )

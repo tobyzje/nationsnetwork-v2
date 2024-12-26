@@ -1,52 +1,75 @@
 "use client"
 
-import { useState } from "react"
-import { useStripe, useElements, PaymentElement } from "@stripe/react-stripe-js"
 import { Button } from "@/components/ui/button"
+import { useCart } from "@/context/CartContext"
+import { useState } from "react"
+
+interface ContactInfo {
+  name: string
+  email: string
+  phone: string
+  company?: string
+  cvr?: string
+}
 
 export default function CheckoutButton() {
-  const stripe = useStripe()
-  const elements = useElements()
-  const [isProcessing, setIsProcessing] = useState(false)
-  const [errorMessage, setErrorMessage] = useState("")
+  const { cart, total } = useCart()
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault()
-    
-    if (!stripe || !elements) return
-    
-    setIsProcessing(true)
-    
+  const handleCheckout = async () => {
     try {
-      const { error } = await stripe.confirmPayment({
-        elements,
-        confirmParams: {
-          return_url: `${window.location.origin}/payment-success`,
+      setLoading(true)
+      
+      // Validér at alle påkrævede felter er udfyldt
+      const name = (document.getElementById('name') as HTMLInputElement)?.value
+      const email = (document.getElementById('email') as HTMLInputElement)?.value
+      const phone = (document.getElementById('phone') as HTMLInputElement)?.value
+      const company = (document.getElementById('company') as HTMLInputElement)?.value
+      const cvr = (document.getElementById('cvr') as HTMLInputElement)?.value
+
+      if (!name || !email || !phone) {
+        alert('Udfyld venligst alle påkrævede felter')
+        return
+      }
+
+      const contactInfo: ContactInfo = {
+        name,
+        email,
+        phone,
+        company,
+        cvr
+      }
+
+      const response = await fetch('/api/create-payment-intent', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify({
+          items: cart,
+          contactInfo
+        }),
       })
 
-      if (error) {
-        setErrorMessage(error.message || "Der skete en fejl")
-      }
-    } catch {
-      setErrorMessage("Der skete en uventet fejl")
+      const data = await response.json()
+      
+      // Redirect til betalings-siden
+      window.location.href = data.url
+    } catch (error) {
+      console.error('Fejl ved checkout:', error)
+      alert('Der skete en fejl. Prøv venligst igen.')
     } finally {
-      setIsProcessing(false)
+      setLoading(false)
     }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <PaymentElement />
-      <Button 
-        className="w-full mt-4"
-        disabled={isProcessing || !stripe || !elements}
-      >
-        {isProcessing ? "Behandler..." : "Betal nu"}
-      </Button>
-      {errorMessage && (
-        <div className="text-red-500 mt-2">{errorMessage}</div>
-      )}
-    </form>
+    <Button 
+      onClick={handleCheckout} 
+      disabled={cart.length === 0 || loading}
+      className="w-full"
+    >
+      {loading ? 'Behandler...' : `Betal ${total} kr.`}
+    </Button>
   )
 } 

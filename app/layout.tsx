@@ -13,8 +13,31 @@ export const metadata: Metadata = {
   title: "NationsNetwork - Din digitale partner",
   description: "Din digitale partner",
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      {
+        url: 'public/favicon.ico',
+        sizes: '32x32',
+      },
+      {
+        url: 'public/icon.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        url: 'public/apple-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
+    apple: [
+      {
+        url: 'public/apple-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
   },
+  manifest: 'public/manifest.json',
 };
 
 export default function RootLayout({

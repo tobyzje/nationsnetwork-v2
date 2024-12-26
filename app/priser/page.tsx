@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge"
 import ContactForm from "../components/ContactForm"
 import BookingCalendar from "../components/BookingCalendar"
 import AddToCartButton from "../components/AddToCartButton"
+import OrderModal from "../components/OrderModal"
+import { useState } from "react"
 
 const features = {
   starter: ["Hjemmeside", "SEO Optimering", "SSL Certifikat", "Support 9-16"],
@@ -24,7 +26,34 @@ const addons = [
 
 ]
 
+interface Product {
+  id: string
+  name: string
+  price: string
+  description: string
+  period?: string
+}
+
+interface HandleOrderClickParams {
+  name: string
+  price: string
+  description: string
+  period?: string
+}
+
 export default function PricingPage() {
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+
+  const handleOrderClick = ({ name, price, description, period }: HandleOrderClickParams) => {
+    setSelectedProduct({
+      id: `${name}-${Date.now()}`,
+      name,
+      price: price.replace(/\D/g, ''),
+      description,
+      period
+    })
+  }
+
   return (
     <div className="min-h-screen bg-zinc-200">
       <div className="py-24 sm:py-32">
@@ -61,7 +90,16 @@ export default function PricingPage() {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button className="w-full">Vælg Starter</Button>
+                <Button 
+                  className="w-full"
+                  onClick={() => handleOrderClick({
+                    name: "Starter",
+                    price: "1.500",
+                    description: "Perfekt til små virksomheder"
+                  })}
+                >
+                  Vælg Starter
+                </Button>
               </CardFooter>
             </Card>
 
@@ -87,7 +125,16 @@ export default function PricingPage() {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button className="w-full bg-green-500 hover:bg-green-600">Vælg Pro</Button>
+                <Button 
+                  className="w-full bg-green-500 hover:bg-green-600"
+                  onClick={() => handleOrderClick({
+                    name: "Pro",
+                    price: "5.000",
+                    description: "For vækstende virksomheder"
+                  })}
+                >
+                  Vælg Pro
+                </Button>
               </CardFooter>
             </Card>
 
@@ -112,7 +159,16 @@ export default function PricingPage() {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button className="w-full">Vælg Enterprise</Button>
+                <Button 
+                  className="w-full"
+                  onClick={() => handleOrderClick({
+                    name: "Enterprise",
+                    price: "8.500",
+                    description: "Til store virksomheder"
+                  })}
+                >
+                  Vælg Enterprise
+                </Button>
               </CardFooter>
             </Card>
           </div>
@@ -145,10 +201,14 @@ export default function PricingPage() {
                   </CardContent>
                   <CardFooter>
                     <AddToCartButton
-                      name={addon.name}
-                      price={addon.price}
-                      period={addon.period}
-                      description={addon.description}
+                      item={{
+                        id: `${addon.name}-${Date.now()}`,
+                        name: addon.name,
+                        price: addon.price,
+                        period: addon.period,
+                        description: addon.description
+                      }}
+                      className="w-full"
                     />
                   </CardFooter>
                 </Card>
@@ -172,6 +232,15 @@ export default function PricingPage() {
           </div>
         </div>
       </div>
+
+      {/* Tilføj Modal i bunden af komponenten */}
+      {selectedProduct && (
+        <OrderModal
+          isOpen={!!selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+          product={selectedProduct}
+        />
+      )}
     </div>
   )
 }

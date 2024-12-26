@@ -21,6 +21,7 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
     
+    
     return (
         <nav className={`fixed w-full z-50 transition-all duration-300 ${
             isScrolled ? `bg-white shadow-lg py-2 lg:max-w-[85%] md:max-w-[90%] max-w-[95%] left-1/2 -translate-x-1/2 mt-2 ${!isOpen && 'rounded-full'}` : 'py-4'
