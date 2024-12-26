@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -21,6 +21,12 @@ export default function Footer() {
               <Phone className="h-4 w-4" />
               <a href="tel:+4527572437" className="hover:text-green-500">
                 +45 27 57 24 37
+              </a>
+            </li>
+            <li className="flex items-center gap-2">
+              <MapPin className="h-4 w-4" />
+              <a className="hover:text-green-500">
+                7200 Grindsted, Danmark
               </a>
             </li>
           </ul>

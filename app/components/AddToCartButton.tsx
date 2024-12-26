@@ -5,14 +5,17 @@ import { useCart } from "@/context/CartContext"
 import { ShoppingCart } from "lucide-react"
 import { useState } from "react"
 
+interface CartItem {
+  id: string
+  name: string
+  price: string
+  description: string
+  period?: "once" | "recurring"
+  billingCycle?: "monthly" | "yearly"
+}
+
 interface AddToCartButtonProps {
-  item: {
-    id: string
-    name: string
-    price: string
-    period?: string
-    description: string
-  }
+  item: CartItem
   className?: string
 }
 
