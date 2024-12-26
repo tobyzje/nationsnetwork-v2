@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 
 const Logo = ({ isScrolled }: { isScrolled: boolean }) => (
   <Link href="/" className="font-bold text-xl text-white tracking-tight hover:scale-105 transition-all duration-300">
-    <p className={cn(isScrolled ? "text-zinc-600" : "text-white")}>
+    <p className={cn(isScrolled ? "text-zinc-600" : "text-zinc-400")}>
       NATIONS <span className="text-green-500">NETWORK</span>
     </p>
   </Link>
@@ -20,7 +20,7 @@ const NavLinks = ({ isScrolled }: { isScrolled?: boolean }) => (
       href="/vores-team" 
       className={cn(
         "transition-colors",
-        isScrolled ? "text-gray-600 hover:text-green-500" : "text-white hover:text-green-400"
+        isScrolled ? "text-gray-600 hover:text-green-500" : "text-black hover:text-green-400"
       )}
     >
       Vores Team
