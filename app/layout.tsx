@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import TopBar from "./components/TopBar";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { CartProvider } from '@/context/CartContext'
 import MobileCartIcon from "./components/MobileCartIcon"
 import CookieConsent from "./components/CookieConsent"
+import { AuthProvider } from "@/context/AuthContext"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -84,7 +84,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  manifest: 'public/manifest.json',
 };
 
 export default function RootLayout({
@@ -95,14 +94,15 @@ export default function RootLayout({
   return (
     <html lang="da">
       <body className={inter.className}>
-        <CartProvider>
-          <TopBar />
-          <Navbar />
-          {children}
-          <MobileCartIcon />
-          <Footer />
-          <CookieConsent />
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <Navbar />
+            {children}
+            <MobileCartIcon />
+            <Footer />
+            <CookieConsent />
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   );
