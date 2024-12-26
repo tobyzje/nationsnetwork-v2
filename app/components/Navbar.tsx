@@ -112,6 +112,12 @@ const MobileMenu = ({ isScrolled }: { isScrolled: boolean }) => {
             >
               Om os
             </Link>
+            <Link 
+              href="/kontakt" 
+              className="text-gray-800 text-lg font-medium hover:text-green-500 transition-colors"
+            >
+              Kontakt os
+            </Link>
             <div className="pt-6 border-t">
               <LoginButton isScrolled={isScrolled} />
             </div>
