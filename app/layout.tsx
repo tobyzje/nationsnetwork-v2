@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { CartProvider } from '@/context/CartContext'
-import MobileCartIcon from "./components/MobileCartIcon"
 import CookieConsent from "./components/CookieConsent"
 import { AuthProvider } from "@/context/AuthContext"
 
@@ -98,7 +97,6 @@ export default function RootLayout({
           <CartProvider>
             <Navbar />
             {children}
-            <MobileCartIcon />
             <Footer />
             <CookieConsent />
           </CartProvider>
