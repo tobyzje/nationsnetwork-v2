@@ -42,7 +42,7 @@ export default async function Dashboard() {
   if (!user) return null
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 mt-24 md:mt-32">
       {/* Profil sektion */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
         <Card className="p-6 col-span-1">

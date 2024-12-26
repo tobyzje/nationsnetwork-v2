@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react"
+import { Facebook, Mail, MapPin, Phone } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -92,28 +92,12 @@ export default function Footer() {
           <h3 className="text-lg font-semibold mb-4">Følg os</h3>
           <div className="flex gap-4">
             <a 
-              href="https://www.facebook.com/nationsnetwork" 
+              href="https://www.facebook.com/profile.php?id=61571182379847" 
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:text-green-500"
             >
               <Facebook className="h-6 w-6" />
-            </a>
-            <a 
-              href="https://www.instagram.com/nationsnetwork" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:text-green-500"
-            >
-              <Instagram className="h-6 w-6" />
-            </a>
-            <a 
-              href="https://www.linkedin.com/company/nationsnetwork" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:text-green-500"
-            >
-              <Linkedin className="h-6 w-6" />
             </a>
           </div>
         </div>
