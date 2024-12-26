@@ -5,7 +5,10 @@ import { useState, useEffect } from "react";
 import LoginButton from "./LoginButton";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-
+<div>
+<p className="text-sm text-gray-500">Navn</p>
+<p className="font-medium">{user.name || 'Ikke angivet'}</p>
+</div>
 const Logo = ({ isScrolled }: { isScrolled: boolean }) => (
   <Link href="/" className="font-bold text-xl text-white tracking-tight hover:scale-105 transition-all duration-300">
     <p className={cn(isScrolled ? "text-zinc-600" : "text-zinc-400")}>
@@ -29,7 +32,7 @@ const NavLinks = ({ isScrolled }: { isScrolled?: boolean }) => (
       href="/cases"
       className={cn(
         "transition-colors",
-        isScrolled ? "text-gray-600 hover:text-green-500" : "text-white hover:text-green-400"
+        isScrolled ? "text-gray-600 hover:text-green-500" : "text-black hover:text-green-400"
       )}
     >
       Cases
@@ -38,7 +41,7 @@ const NavLinks = ({ isScrolled }: { isScrolled?: boolean }) => (
       href="/priser"
       className={cn(
         "transition-colors",
-        isScrolled ? "text-gray-600 hover:text-green-500" : "text-white hover:text-green-400"
+        isScrolled ? "text-gray-600 hover:text-green-500" : "text-black hover:text-green-400"
       )}
     >
       Priser
@@ -47,7 +50,7 @@ const NavLinks = ({ isScrolled }: { isScrolled?: boolean }) => (
       href="/om-os"
       className={cn(
         "transition-colors",
-        isScrolled ? "text-gray-600 hover:text-green-500" : "text-white hover:text-green-400"
+        isScrolled ? "text-gray-600 hover:text-green-500" : "text-black hover:text-green-400"
       )}
     >
       Om os
@@ -74,7 +77,7 @@ const MobileMenu = ({ isScrolled }: { isScrolled: boolean }) => {
           "p-2 rounded-lg transition-colors",
           isScrolled 
             ? "hover:bg-gray-100 text-gray-600" 
-            : "text-white hover:bg-white/10"
+            : "text-slate-600 hover:bg-white/10"
         )}
         aria-label="Toggle menu"
       >

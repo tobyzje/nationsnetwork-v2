@@ -66,6 +66,10 @@ export default async function Dashboard() {
                 <p className="font-medium">{user.name || 'Ikke angivet'}</p>
               </div>
               <div>
+                <p className="text-sm text-gray-500">Mobil</p>
+                <p className="font-medium">{user.phone || 'Ikke angivet'}</p>
+              </div>
+              <div>
                 <p className="text-sm text-gray-500">Medlem siden</p>
                 <p className="font-medium">
                   {new Date(user.createdAt).toLocaleDateString('da-DK')}

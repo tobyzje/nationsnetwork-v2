@@ -190,20 +190,6 @@ export default function PricingPage() {
 
           {/* Process Steps */}
           <ProcessSteps />
-
-          {/* Contact Section */}
-          <div className="mt-24 text-center">
-            <h2 className="text-3xl font-bold mb-4">Book et uforpligtende møde</h2>
-            <p className="text-gray-600 mb-8">
-              Lad os tage en snak om dine behov og hvordan vi kan hjælpe
-            </p>
-            <div className="max-w-md mx-auto">
-            </div>
-            <div className="mt-12">
-              <h3 className="text-2xl font-bold mb-4">Eller kontakt os direkte</h3>
-              <ContactForm />
-            </div>
-          </div>
         </div>
       </div>
     </motion.div>
