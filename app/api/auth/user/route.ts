@@ -21,6 +21,15 @@ export async function GET() {
         id: true,
         email: true,
         name: true,
+        phone: true,
+        companyName: true,
+        cvr: true,
+        address: true,
+        city: true,
+        zipCode: true,
+        contactPerson: true,
+        contactEmail: true,
+        contactPhone: true,
         hasWebSolution: true
       }
     })
@@ -30,4 +39,4 @@ export async function GET() {
     console.error('Auth check error:', error)
     return NextResponse.json({ user: null })
   }
-} 
+}

@@ -41,7 +41,7 @@ export default function LoginButton({ isScrolled }: LoginButtonProps) {
             "transition-colors",
             isScrolled 
               ? "text-gray-600 hover:text-green-500" 
-              : "text-white hover:text-green-400"
+              : "text-black hover:text-green-400"
           )}
         >
           Login
