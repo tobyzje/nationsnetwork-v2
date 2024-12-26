@@ -3,7 +3,7 @@ import { Lightbulb, Star, Handshake, CheckCircle2 } from "lucide-react";
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Nations Network',
+  name: 'NationsNetwork - Webudvikling & Hosting',
   description: 'Nations Network er en webudvikling og hosting virksomhed der tilbyder skræddersyede digitale løsninger til din virksomhed',
   url: 'https://nationsnetwork.dk',
   // Tilføj flere relevante felter
