@@ -79,7 +79,16 @@ export default function LoginButton({ isScrolled }: LoginButtonProps) {
           Login
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent 
+        className="sm:max-w-[425px]" 
+        onPointerDownOutside={(e) => {
+          // Forhindrer lukning når man trykker inden for dialogen
+          const target = e.target as HTMLElement
+          if (target.closest('input, button, [role="tab"]')) {
+            e.preventDefault()
+          }
+        }}
+      >
         <DialogHeader>
           <DialogTitle>Velkommen tilbage</DialogTitle>
           <DialogDescription>
