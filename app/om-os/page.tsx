@@ -1,4 +1,5 @@
 import { Lightbulb, Star, Handshake, CheckCircle2 } from "lucide-react";
+import type { Metadata } from 'next'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -7,6 +8,16 @@ const jsonLd = {
   description: 'Nations Network er en webudvikling og hosting virksomhed der tilbyder skræddersyede digitale løsninger til din virksomhed',
   url: 'https://nationsnetwork.dk',
   // Tilføj flere relevante felter
+}
+
+export const metadata: Metadata = {
+  title: 'Om Os | Nations Network',
+  description: 'Lær mere om Nations Network og vores passion for at skabe digitale løsninger der gør en forskel.',
+  keywords: ['om os', 'nations network team', 'virksomhed', 'digital partner'],
+  openGraph: {
+    title: 'Om Nations Network',
+    description: 'Din digitale partner for professionel webudvikling og hosting',
+  }
 }
 
 export default function OmOs() {

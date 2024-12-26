@@ -1,6 +1,6 @@
 "use client"
 
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react"
+import { Facebook, Mail, MapPin, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 
@@ -54,16 +54,12 @@ export default function Footer() {
           {/* Sociale Medier */}
           <div>
             <h3 className="text-xl font-bold mb-4">Følg Os</h3>
-            <div className="flex gap-4 text-black">
-              <Button variant="outline" size="icon" className="rounded-full">
-                <Facebook className="h-5 w-5" />
-              </Button>
-              <Button variant="outline" size="icon" className="rounded-full">
-                <Instagram className="h-5 w-5" />
-              </Button>
-              <Button variant="outline" size="icon" className="rounded-full">
-                <Linkedin className="h-5 w-5" />
-              </Button>
+            <div className="flex gap-4">
+              <Link href="https://www.facebook.com/profile.php?id=61571182379847" className="hover:scale-125 transition-all duration-300">
+                <Button variant="default" size="icon" className="rounded-full hover:bg-green-500">
+                  <Facebook className="h-5 w-5  hover:scale-125 transition-all duration-300" />
+                </Button>
+              </Link>
             </div>
           </div>
 

@@ -27,7 +27,7 @@ export default function Home() {
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">Din Digitale Partner</h1>
           <p className="text-xl text-white mb-8">Vi hjælper din virksomhed med at vokse gennem skræddersyede digitale løsninger</p>
           <div className="flex gap-4 justify-center">
-            <Link href="/pris-beregner">
+            <Link href="/under-opbygning">
               <Button size="lg" className="bg-green-500 hover:bg-green-600">
                 Kom i gang
                 <ArrowRight className="ml-2 h-5 w-5" />

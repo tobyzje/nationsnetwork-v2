@@ -60,7 +60,7 @@ export default function Navbar() {
                     <div className="lg:hidden">
                         <button 
                             onClick={() => setIsOpen(!isOpen)}
-                            className="p-2 rounded-md text-gray-600"
+                            className={`p-2 rounded-md ${isScrolled ? 'text-zinc-600' : 'text-white'}`}
                             aria-label="Toggle menu"
                         >
                             {isOpen ? (
@@ -87,7 +87,7 @@ export default function Navbar() {
                             <Link href="/vores-team" className="block px-3 py-2 text-gray-600 hover:text-green-500 rounded-md">
                                 Vores Team
                             </Link>
-                            <Link href="/cases" className={`font-medium hover:text-green-500 transition-colors ${isScrolled ? 'text-slate-600' : 'text-white'}`}>
+                            <Link href="/cases" className="block px-3 py-2 text-gray-600 hover:text-green-500 rounded-md">
                                 Cases
                             </Link>
                             <Link href="/priser" className="block px-3 py-2 text-gray-600 hover:text-green-500 rounded-md">

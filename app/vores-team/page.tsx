@@ -1,3 +1,5 @@
+"use client"
+
 import OurTeamBG from "@/public/our-team-bg.jpg"
 import Image from "next/image"
 import ContactForm from "../components/ContactForm"
@@ -23,7 +25,7 @@ export default function VoresTeam() {
 
 
                 <div className="max-w-7xl mx-auto px-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 gap-8">
                         <div className="bg-white/95 p-8 rounded-xl shadow-xl transform hover:scale-105 transition-transform duration-300">
                             <div className="text-center">
                                 <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-green-100 flex items-center justify-center">
@@ -49,30 +51,6 @@ export default function VoresTeam() {
                             </div>
                         </div>
 
-                        <div className="bg-white/95 p-8 rounded-xl shadow-xl transform hover:scale-105 transition-transform duration-300">
-                            <div className="text-center">
-                                <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-green-100 flex items-center justify-center">
-                                    <span className="text-4xl">👨‍💻</span>
-                                </div>
-                                <h3 className="text-3xl font-bold text-gray-800 mb-2">Lucas Olsen</h3>
-                                <p className="text-green-600 font-semibold text-lg mb-4">TBA</p>
-                                <p className="text-gray-600 leading-relaxed mb-6">
-                                    Lucas er en af vores seneste tilføjelser til NationsNetwork. 
-                                    Han er en af vores seneste tilføjelser til NationsNetwork. 
-                                    Han er en af vores seneste tilføjelser til NationsNetwork.                                     
-                                </p>
-                                <div className="space-y-2 text-gray-700">
-                                    <p className="flex items-center justify-center gap-2 hover:text-green-600 transition-colors">
-                                        <span>📧</span>
-                                        <a href="mailto:nicolai@nationsnetwork.dk">lucas@nationsnetwork.dk</a>
-                                    </p>
-                                    <p className="flex items-center justify-center gap-2 hover:text-green-600 transition-colors">
-                                        <span>📱</span>
-                                        <a href="tel:+4542837437">+45 12 34 56 78</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

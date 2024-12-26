@@ -12,9 +12,9 @@ import { useState } from "react"
 import ProcessSteps from "../components/ProcessSteps"
 
 const features = {
-  starter: ["Hjemmeside", "SEO Optimering", "SSL Certifikat", "Support 9-16"],
-  pro: ["Alt i Starter", "SoMe Marketing", "Google Ads", "24/7 Support", "Analytics"],
-  enterprise: ["Alt i Pro", "Custom Design", "API Integration", "Dedicated Manager", "Priority Support"]
+  starter: ["Op til 5 sider", "Simpel SEO optimering", "SSL Certifikat", "Support 9-16"],
+  pro: ["Op til 8 sider", "SEO optimering", "Google Ads", "24/7 Support", "Analytics"],
+  enterprise: ["Alt i pro", "Ubegrenset sider", "Ubegrenset SEO optimering", "Udvidet support", "Og meget mere"]
 }
 
 const addons = [
