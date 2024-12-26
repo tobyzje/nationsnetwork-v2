@@ -9,6 +9,7 @@ import BookingCalendar from "../components/BookingCalendar"
 import AddToCartButton from "../components/AddToCartButton"
 import OrderModal from "../components/OrderModal"
 import { useState } from "react"
+import ProcessSteps from "../components/ProcessSteps"
 
 const features = {
   starter: ["Hjemmeside", "SEO Optimering", "SSL Certifikat", "Support 9-16"],
@@ -173,6 +174,11 @@ export default function PricingPage() {
             </Card>
           </div>
 
+          {/* Process Steps */}
+          <div className="mt-8 bg-zinc-200  rounded-lg p-6">
+            <ProcessSteps />
+          </div>
+
           {/* Addons Section */}
           <div className="mt-24">
             <h2 className="text-3xl font-bold text-center mb-12">Tilkøb og Udvidelser</h2>
@@ -215,6 +221,7 @@ export default function PricingPage() {
               ))}
             </div>
           </div>
+
 
           {/* FAQ Section */}
           <div className="mt-24 text-center">

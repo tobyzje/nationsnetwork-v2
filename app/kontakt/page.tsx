@@ -1,6 +1,6 @@
 "use client"
 
-import { Mail, Phone, Clock } from "lucide-react"
+import { Mail, Phone, Clock, Hash } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -99,6 +99,15 @@ export default function Kontakt() {
                                             <a href="mailto:kontakt@nationsnetwork.dk" className="text-gray-600 hover:text-green-500">
                                                 kontakt@nationsnetwork.dk
                                             </a>
+                                            
+                                        </div>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <Hash className="h-5 w-5 text-green-500" />
+                                        <div>
+                                            <p className="font-medium">CVR-NR</p>
+                                            <p className="text-gray-600">45062260</p>
+                                            
                                         </div>
                                     </div>
                                     <div className="flex items-center gap-3">

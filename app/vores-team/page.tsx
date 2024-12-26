@@ -14,7 +14,7 @@ export default function VoresTeam() {
             />
             <div className="relative z-10 pt-32 pb-16">
                 <div className="text-center mb-16">
-                    <h1 className="text-5xl font-bold text-white mb-4">Mød holdet bag din succes</h1>
+                    <h1 className="text-5xl font-bold text-white mb-4">Mød holdet bag din webpræsenation</h1>
                     <p className="text-xl text-white/90">Vi er dedikerede til at hjælpe din virksomhed med at vokse</p>
                     <div className="flex items-center justify-center mt-8 -mb-7">
                         <ContactForm/>

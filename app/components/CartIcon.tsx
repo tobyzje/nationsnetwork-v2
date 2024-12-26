@@ -11,7 +11,7 @@ export default function CartIcon() {
 
   return (
     <Link href="/cart">
-      <Button variant="ghost" className="relative">
+      <Button variant="default" className="relative bg-green-500 hover:bg-green-600 text-white">
         <ShoppingCart className="h-6 w-6" />
         {itemCount > 0 && (
           <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">

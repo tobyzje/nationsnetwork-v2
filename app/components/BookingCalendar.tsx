@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { CalendarIcon, Clock } from "lucide-react"
 import { format } from "date-fns"
 import { da } from 'date-fns/locale'
+import { Input } from "@/components/ui/input"
 
 const timeSlots = [
   "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"
@@ -16,10 +17,13 @@ const timeSlots = [
 export default function BookingCalendar() {
   const [date, setDate] = React.useState<Date>()
   const [selectedTime, setSelectedTime] = React.useState<string>()
+  const [name, setName] = React.useState<string>("")
+  const [phone, setPhone] = React.useState<string>("")
 
   const handleBooking = () => {
-    if (date && selectedTime) {
+    if (date && selectedTime && name && phone) {
       console.log("Booking for:", format(date, 'dd/MM/yyyy'), "at", selectedTime)
+      console.log("Kunde:", name, "Telefon:", phone)
       // Her kan du implementere din booking logik
     }
   }
@@ -37,6 +41,25 @@ export default function BookingCalendar() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
+          <div className="flex flex-col space-y-2">
+            <label className="text-sm font-medium">Dit navn</label>
+            <Input 
+              placeholder="Indtast dit navn"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+
+          <div className="flex flex-col space-y-2">
+            <label className="text-sm font-medium">Dit telefonnummer</label>
+            <Input 
+              placeholder="Indtast dit telefonnummer"
+              type="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
+
           <div className="flex flex-col space-y-2 items-center">
             <label className="text-sm font-medium">Vælg dato</label>
             <Calendar
@@ -69,10 +92,13 @@ export default function BookingCalendar() {
                       </span>
                     </SelectItem>
                   ))}
+
                 </SelectContent>
               </Select>
             </div>
           )}
+
+        
 
           {date && selectedTime && (
             <div className="mt-4 p-4 bg-green-50 rounded-md text-center">
@@ -86,7 +112,7 @@ export default function BookingCalendar() {
           <Button 
             onClick={handleBooking} 
             className="w-full bg-green-500 hover:bg-green-600"
-            disabled={!date || !selectedTime}
+            disabled={!date || !selectedTime || !name || !phone}
           >
             Book mødet
           </Button>

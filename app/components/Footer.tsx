@@ -36,7 +36,7 @@ export default function Footer() {
               <li><Link href="/priser" className="hover:text-green-500 transition-colors">Ydelser</Link></li>
               <li><Link href="/om-os" className="hover:text-green-500 transition-colors">Om Os</Link></li>
               <li><Link href="/kontakt" className="hover:text-green-500 transition-colors">Kontakt</Link></li>
-              <li><Link href="/blog" className="hover:text-green-500 transition-colors">Vores Team</Link></li>
+              <li><Link href="/vores-team" className="hover:text-green-500 transition-colors">Vores Team</Link></li>
             </ul>
           </div>
 
