@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import CartIcon from "./CartIcon";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -71,6 +72,10 @@ export default function Navbar() {
                                 </svg>
                             )}
                         </button>
+                    </div>
+
+                    <div className="hidden md:flex items-center">
+                        <CartIcon />
                     </div>
                 </div>
 

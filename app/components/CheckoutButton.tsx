@@ -1,67 +1,52 @@
 "use client"
 
 import { useState } from "react"
+import { useStripe, useElements, PaymentElement } from "@stripe/react-stripe-js"
 import { Button } from "@/components/ui/button"
-import { useToast } from "@/hooks/use-toast"
 
-interface CheckoutButtonProps {
-  name: string
-  price: string
-  period?: string
-  description: string
-}
+export default function CheckoutButton() {
+  const stripe = useStripe()
+  const elements = useElements()
+  const [isProcessing, setIsProcessing] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("")
 
-export default function CheckoutButton({ name, price, period, description }: CheckoutButtonProps) {
-  const [isLoading, setIsLoading] = useState(false)
-  const { toast } = useToast()
-
-  const handleCheckout = async () => {
-    setIsLoading(true)
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault()
+    
+    if (!stripe || !elements) return
+    
+    setIsProcessing(true)
+    
     try {
-      const response = await fetch('/api/create-payment-intent', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const { error } = await stripe.confirmPayment({
+        elements,
+        confirmParams: {
+          return_url: `${window.location.origin}/payment-success`,
         },
-        body: JSON.stringify({
-          name,
-          price: Number(price.replace(/[^0-9]/g, '')),
-          period,
-          description
-        }),
       })
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok')
+      if (error) {
+        setErrorMessage(error.message || "Der skete en fejl")
       }
-
-      const data = await response.json()
-      
-      if (data.url) {
-        window.location.href = data.url
-      } else {
-        throw new Error('Kunne ikke oprette betalingslink')
-      }
-    } catch (error) {
-      console.error('Checkout error:', error)
-      toast({
-        title: "Der skete en fejl",
-        description: "Kunne ikke behandle din betaling. Prøv igen senere.",
-        variant: "destructive",
-      })
+    } catch {
+      setErrorMessage("Der skete en uventet fejl")
     } finally {
-      setIsLoading(false)
+      setIsProcessing(false)
     }
   }
 
   return (
-    <Button 
-      variant="outline" 
-      className="w-full" 
-      onClick={handleCheckout}
-      disabled={isLoading}
-    >
-      {isLoading ? "Behandler..." : "Tilføj til bestilling"}
-    </Button>
+    <form onSubmit={handleSubmit}>
+      <PaymentElement />
+      <Button 
+        className="w-full mt-4"
+        disabled={isProcessing || !stripe || !elements}
+      >
+        {isProcessing ? "Behandler..." : "Betal nu"}
+      </Button>
+      {errorMessage && (
+        <div className="text-red-500 mt-2">{errorMessage}</div>
+      )}
+    </form>
   )
 } 

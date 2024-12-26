@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge"
 import ContactForm from "../components/ContactForm"
 import BookingCalendar from "../components/BookingCalendar"
-import CheckoutButton from "../components/CheckoutButton"
+import AddToCartButton from "../components/AddToCartButton"
 
 const features = {
   starter: ["Hjemmeside", "SEO Optimering", "SSL Certifikat", "Support 9-16"],
@@ -144,7 +144,7 @@ export default function PricingPage() {
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <CheckoutButton
+                    <AddToCartButton
                       name={addon.name}
                       price={addon.price}
                       period={addon.period}
